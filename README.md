@@ -17,7 +17,7 @@ Additionally, we integrated different kinds of responses for answers including f
 
 Meet and speak with PRO(TECH)T online here: <a href="https://pro-tech-t.herokuapp.com" target="_blank">PRO(TECH)T</a>
 
-Skip straigh to the manifesto here: <a href="https://pro-tech-t.herokuapp.com/manifesto" target="_blank">MANIFESTO</a>
+Skip straight to the manifesto here: <a href="https://pro-tech-t.herokuapp.com/manifesto" target="_blank">MANIFESTO</a>
 
 
 # **Collaborators**
