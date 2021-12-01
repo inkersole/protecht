@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PRO(TECH)T ❤️</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://www.dafontfree.net/embed/YWxleGlzLWJvbGQtaXRhbGljLWJvbGQtaXRhbGljJmRhdGEvMzYwL2EvMTc0MTYwL2FsZXhpc3YzYm9sZGl0YWwudHRm" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div id= "progress-bar">
+            <div></div>
+        </div>
+        <div id="background-container">
+            <div id="background-container-inner">
+                <div id="background-outer-gradient"></div>
+                <div id="background-inner-gradient"></div>
+            </div>
+        </div>
+
+        <div id="enter-screen">
+            <div id="logo-container">
+                <img src="/assets/latent_logo.png">
+                <img src="/assets/limbo_logo.png">
+            </div>
+            <p>
+                meet PRO(TECH)T, a collaborative dialogue here to help us reimagine autonomy, identity and desire in the virtual worlds we inhabit. your answers will contribute to a collective dream, a manifesto for more equitable digital futures.
+                <br><br>
+                once the conversation is complete you’ll be invited to view the evolving manifesto, created in collaboration with each person who has met with PRO(TECH)T.  the purpose being to build a digital future where we can regain control, subvert the coded erasure of gender minorities and reclaim the right to expression through the very technology which fails to acknowledge us. 
+                <br><br>
+                PRO(TECH)T will react in real-time to each of your responses using AI to conduct sentiment analysis* on the answers you share, altering the colours of the room to suit your mood. 
+                <br><br>
+                by clicking ‘ENTER’ and speaking with PRO(TECH)T, you are agreeing to contribute to the collective manifesto — collaboratively exploring the relationship between identity, technology and well-being, in the hope of building safer and more nourishing digital spaces. 
+            </p>
+            <div id="enter-button" class="option-button">ENTER</div>
+        </div>
+
+        <main>
+
+            <p id="question"></p>
+
+            <div id="response">
+                <div id="free-response-container">
+                    <textarea></textarea>
+                    <div class="send-button">
+                       <p>></p>
+                    </div>
+                </div>
+                <div id="options-container"></div>
+            </div>
+
+            <div id="end-screen">
+                <p>Thank you for your answers. You can now view the manifesto created with yours and everybody elses responses who has met with PRO(TECH)T.</p>
+                <a href="/manifesto">VIEW MANIFESTO</a>
+            </div>
+            <div id="thinking-container">
+                <p id="thinking-text"> </p>
+            </div>
+
+
+            <!-- <div id="button-wrap">
+                <div id="button"></div>
+            </div> -->
+
+        </main>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"></script> -->
+        <script src="/questions.js"></script>
+        <script src="/autosize.js"></script>
+        <script src="/script.js"></script>
+    </body>
+</html>

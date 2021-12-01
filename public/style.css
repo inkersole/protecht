@@ -1,0 +1,400 @@
+@font-face {
+    font-family: 'tix';
+    src: url('/assets/ticketing.ttf');
+}
+
+* {
+    margin: 0;
+    color: white;
+    font-family: 'tix';
+    /* font-family: 'alexis-bold-italic-bold-italic', sans-serif; */
+    user-select: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    background-color: white;
+    /* border: 1px solid white; */
+}
+
+#background-container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 800px;
+    overflow: hidden;
+}
+
+#background-container-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 125%;
+    height: 125%;
+    top: -12.5%;
+    left: -12.5%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    transition: transform 0.5s linear;
+    filter: hue-rotate(0deg);
+}
+
+#background-outer-gradient {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: radial-gradient(#e66465 0%, orange 20%, black 40%); */
+    background: radial-gradient(transparent 50%, white 95%);
+}
+
+#background-inner-gradient {
+    display: none;
+    position: absolute;
+    width: 100vh;
+    height: 100vh;
+    /* background: radial-gradient(#e66465 0%, orange 20%, black 40%); */
+    background: radial-gradient(circle at 50% 43%, transparent calc(5% - 180px), white, transparent 60%);
+}
+
+#enter-screen  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    /* width: 100%; */
+    height: 100%;
+}
+
+#logo-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 8%;
+    /* background-color: lime; */
+}
+
+#logo-container img {
+    width: 40%;
+}
+
+#enter-screen p {
+    width: 85%;
+    font-size: 15px;
+    text-align: center;
+    overflow: scroll;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    text-shadow: 0px 0px 10px black;
+}
+
+#enter-screen p::-webkit-scrollbar {
+    display: none;
+}
+
+#enter-screen p {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#enter-button {
+    width: 80%;
+    /* margin-bottom: 20px; */
+}
+
+main {
+    display: none;
+    position: relative;
+    /* width: 46%; */
+    height: 100%;
+    /* background-color: blue; */
+}
+
+#question {
+    position: absolute;
+    z-index: 1;
+    width: 90%;
+    top: 5%;
+    left: 5%;
+    font-size: 24px;
+    /* font-style: italic; */
+    text-align: center;
+    text-shadow: 0px 0px 5px black;
+    /* background-color: lime; */
+}
+
+#response {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    /* height: 50%; */
+    bottom: 0;
+    left: 0;
+    /* background-color: lime; */
+}
+
+#options-container {
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    /* max-height: 60vh; */
+    /* overflow-y: scroll; */
+    /* background-color: red; */
+}
+
+.option-button {
+    display: block;
+    width: 80%;
+    /* height: 20px; */
+    font-size: 20px;
+    padding: 6px 10px 6px 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 10px black;
+    text-shadow: 0px 0px 5px black;
+    margin: 0px 0px 10px 0px;
+}
+
+#free-response-container {
+    display: none;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 100%;
+    height: 60px;
+    padding-bottom: 20px;
+    /* background-color: rgb(98, 0, 255); */
+}
+
+textarea {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 70%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    /* text-align: center; */
+    outline: none;
+    border: 1px solid white;
+    color: white;
+    font-size: 24px;
+    padding: 0px 10px;
+    /* font-style: italic; */
+    /* background-color: lime; */
+    /* padding: 5px; */
+    resize: none;
+    box-shadow: 0px 0px 10px black;
+    -webkit-box-shadow: 0 0 10px black;
+    -moz-box-shadow: 0 0 10px black;
+    text-shadow: 0px 0px 5px black;
+}
+
+.send-button {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    box-shadow: 0px 0px 10px black;
+}
+
+.send-button p, .multiple-send-button p {
+    margin-left: 7px;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 5px black;
+    pointer-events: none;
+}
+
+canvas {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+#button-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+#button {
+    width: 250px;
+    height: 250px;
+    border-radius: 200px;
+    /* border: 1px solid rgba(255, 255, 255, 0.4); */
+    /* background-color: lime; */
+}
+
+.selected {
+    filter: invert(100%);
+}
+
+.multiple-send-button {
+    /* position: absolute; */
+    align-self: flex-end;
+    border: 1px solid white;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-right: 25px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#end-screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#end-screen p {
+    width: 70%;
+    font-size: 24px;
+    margin-bottom: 20%;
+    text-align: center;
+    text-shadow: 0px 0px 5px black;
+}
+
+#end-screen a {
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 0px 0px 5px black;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+#progress-bar {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    height: 10px;
+    z-index: 3;
+    animation: fade-in 2s 1 linear
+}
+
+#progress-bar div {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+
+#thinking-container {
+    position: fixed;
+    z-index: 4;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: fade-in 0.2s linear;
+}
+
+#thinking-text {
+    font-size: 30px;
+    text-shadow: 0px 0px 5px black;
+    width: 230px;
+    margin-top: -30px;
+
+}
+
+.type-indicator {
+    font-size: 16px;
+
+}
+
+@media screen and (max-height: 600px) {
+    .option-button {
+        font-size: 14px;
+    }
+
+    .multiple-send-button {
+        width: 30px;
+        height: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    main {
+        width: 750px;
+    }
+}
+
+@media (orientation: landscape) {
+    main {
+        width: 46%;
+    }
+
+    #enter-screen  {
+        width: 46%;
+    }
+}
+
+@media (orientation: portrait) {
+    main {
+        width: 100%;
+    }
+
+    #enter-screen  {
+        width: 100%;
+    }
+}
