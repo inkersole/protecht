@@ -30,8 +30,8 @@ function handleQuestionClick(e, id) {
     } else {
         console.log(e.target.parentNode.getElementsByClassName('question-inner')[0]);
         e.target.parentNode.getElementsByClassName('question-inner')[0].remove();
-        if (e.target.parentNode.getElementsByTagName('button')[0]) {
-            e.target.parentNode.getElementsByTagName('button')[0].remove();
+        if (e.target.parentNode.getElementsByClassName('getMoreButton')[0]) {
+            e.target.parentNode.getElementsByClassName('getMoreButton')[0].remove();
         };
         openSections = openSections.filter(item => item !== id);
         document.getElementsByTagName('span')[id].classList.remove('close');
