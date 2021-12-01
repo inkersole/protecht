@@ -28,7 +28,11 @@ function handleQuestionClick(e, id) {
         document.getElementsByTagName('span')[id].classList.remove('open');
         document.getElementsByTagName('span')[id].classList.add('close');
     } else {
-        e.target.parentNode.children[1].remove();
+        console.log(e.target.parentNode.getElementsByClassName('question-inner')[0]);
+        e.target.parentNode.getElementsByClassName('question-inner')[0].remove();
+        if (e.target.parentNode.getElementsByTagName('button')[0]) {
+            e.target.parentNode.getElementsByTagName('button')[0].remove();
+        };
         openSections = openSections.filter(item => item !== id);
         document.getElementsByTagName('span')[id].classList.remove('close');
         document.getElementsByTagName('span')[id].classList.add('open');
@@ -36,17 +40,22 @@ function handleQuestionClick(e, id) {
     console.log(openSections);
 };
 
-function fetchQuestionData(id) {
-    console.log(id);
-    axios.get(`/answers/${id}`).then((response) => {
+function fetchQuestionData(id, lastEvaluatedKey, appendingMore) {
+    console.log(id, lastEvaluatedKey);
+    axios.get(`/answers/${id}${lastEvaluatedKey ? `?pk=${lastEvaluatedKey.PK}&sk=${lastEvaluatedKey.SK}` : ''}`).then((response) => {
         const {
-            Items
+            Items,
+            LastEvaluatedKey
         } = response.data.data;
 
-        console.log(response);
         if (Items.length) {
-            let div = document.createElement('div');
-            div.classList.add('question-inner');
+            let div = appendingMore ? document.getElementById(`q${id}`) : document.createElement('div');
+
+            if (!appendingMore) {
+                div.id = `q${id}`;
+                div.classList.add('question-inner');
+            };
+
             Items.forEach(elem => {
 
                 console.log(elem.sentiment_obj.sentimentScore.replace(/[^0-9]/g,''));
@@ -99,6 +108,23 @@ function fetchQuestionData(id) {
             });
 
             document.getElementsByClassName('question-container')[id].appendChild(div);
+
+            if (LastEvaluatedKey) {
+                let getMoreButton = document.createElement('div');
+                getMoreButton.classList.add('getMoreButton')
+                getMoreButton.innerText = 'show more';
+
+                function getMoreResults() {
+                    getMoreButton.removeEventListener('click', getMoreResults);
+                    getMoreButton.parentElement.removeChild(getMoreButton);
+                    fetchQuestionData(id, LastEvaluatedKey, true);
+                };
+
+                getMoreButton.addEventListener('click', getMoreResults);
+
+                document.getElementsByClassName('question-container')[id].appendChild(getMoreButton);
+            };
+
         };
     });
 }

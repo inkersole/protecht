@@ -29,7 +29,10 @@ app.get('/answers/:q_id', (req, res) => {
         });
     } else {
         let parsedPK = parseInt(req.params.q_id);
-        let lastEvaluatedKey = !!req.query.lek ? req.query.lek : null;
+        let lastEvaluatedKey = !!(req.query.pk && !isNaN(req.query.pk) && req.query.sk) ? {
+            PK: parseInt(req.query.pk),
+            SK: req.query.sk
+        } : null;
 
         getAnswers(parsedPK, lastEvaluatedKey).then(result => {
             res.status(200).json({

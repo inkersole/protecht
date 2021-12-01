@@ -61,6 +61,18 @@ main {
     transform: translateX(2px) translateY(3px);
 }
 
+.getMoreButton{
+    width: 80px;
+    border: 1px solid white;
+    color: white;
+    padding: 5px;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 10px;
+    text-shadow: 0px 0px 5px black;
+    margin: 15px 0px 5px calc(50% - 40px);
+    text-align: center;
+}
+
 .response-container {
     /* height: 20px; */
     font-size: 18px;
@@ -102,4 +114,25 @@ main {
 
 .answer {
     margin-bottom: 10px;
+}
+
+@media (orientation: landscape) {
+    main {
+        width: 46%;
+        margin-left: 27%;
+    }
+
+    #enter-screen  {
+        width: 46%;
+    }
+}
+
+@media (orientation: portrait) {
+    main {
+        width: 100%;
+    }
+
+    #enter-screen  {
+        width: 100%;
+    }
 }

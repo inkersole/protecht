@@ -43,6 +43,8 @@ const insertResponse = resp => {
 
 const getAnswers = (PK, lastEvaluatedKey) => {
     return new Promise((resolve, reject) => {
+        console.log('lastEvaluatedKey', lastEvaluatedKey);
+
         let getParams = {
             TableName: process.env.TABLE_NAME,
             KeyConditionExpression: 'PK = :pk and begins_with(SK, :skp)',
@@ -50,7 +52,7 @@ const getAnswers = (PK, lastEvaluatedKey) => {
                 ':pk': PK,
                 ':skp': "answer/"
             },
-            Limit: 20,
+            Limit: 5,
             ExclusiveStartKey: !!lastEvaluatedKey ? lastEvaluatedKey : null
         };
 
